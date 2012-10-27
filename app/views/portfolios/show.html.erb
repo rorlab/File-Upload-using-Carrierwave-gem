@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @portfolio.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @portfolio.description %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @portfolio.artist %>
+</p>
+
+<p>
+  <%= image_tag(@portfolio.work_image.url(:thumb)) if @portfolio.work_image.present? %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', portfolios_path %>

@@ -1,0 +1,44 @@
+<%= form_for(@portfolio) do |f| %>
+  <% if @portfolio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+      <ul>
+      <% @portfolio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => "5" %>
+  </div>
+  <div class="field">
+    <%= f.label :artist %><br />
+    <%= f.text_field :artist %>
+  </div>
+  <div class="field">
+    <%= f.label :work_image %><br />
+    <%= f.file_field :work_image %><br />
+    <%= f.label :remote_work_image_url, "or image url" %>
+    <%= f.text_field :remote_work_image_url %>
+  </div>
+  <% if f.object.work_image.present? %>
+  <div>
+    <%= image_tag f.object.work_image.url(:thumb) if f.object.work_image.present? %><br />
+    <%= f.check_box :remove_work_image %>
+    <%= f.label :remove_work_image, "delete image" %>
+  </div>
+  <% end %>
+  <div class="field">
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<h1>Listing portfolios</h1>
+
+<table class="bordered">
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th class="actions" colspan="3">Actions</th>
+  </tr>
+
+<% @portfolios.each do |portfolio| %>
+  <tr>
+    <td><%= portfolio.title %></td>
+    <td class="center"><%= portfolio.artist %></td>
+    <td class="center"><%= link_to 'Show', portfolio %></td>
+    <td class="center"><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
+    <td class="center"><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Portfolio', new_portfolio_path %>
